@@ -1,0 +1,823 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="./out/ODD_TEI_LIMC_V3.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?> <!-- ici on met le lien vers le fichier RNG généré en sortie du fichier ODD-->
+<?xml-model href="./out/ODD_TEI_LIMC_V3.rng" type="application/xml" 
+	schematypens="http://purl.oclc.org/dsdl/schematron"?> <!-- ici aussi -->
+
+
+<!-- Début DTD -->
+
+<!-- L'idéal sera de créer, sur le modèle de celui de Clytemnestre (cly) et de Laois (lao) des entités pour chaque personnage du LIMC afin de faciliter les renvois (qui sont très nombreux) -->
+
+<!DOCTYPE TEI [
+     
+     <!ENTITY LIMC '<choice><expan xml:lang="la">Lexicon Iconographicon Mythologiae Classicae </expan><abbr xml:lang="la">LIMC</abbr></choice>' > <!-- Entité pour le LIMC -->
+     
+     <!ENTITY KLY "<ref target ='cly'>Klytaimestra </ref>" >
+     
+     <!ENTITY LAO "<ref target ='lao'>Laois</ref>" >
+     
+]>
+
+
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+
+
+
+
+   <teiHeader>
+
+
+      <fileDesc>
+
+         <!-- titleStmt : informations sur la présente édition -->
+         <titleStmt>
+            <title>Encodage de deux notices issues du &LIMC; </title>
+
+
+            <author>
+               <orgName> École nationale des chartes</orgName>
+               <persName>Maxime Griveau</persName>
+            </author>
+
+
+            <editor>
+               <name>Éditions de l'école des chartes</name>
+               <!-- En ademetant que cette publication soit destinnée à être publiée par les éditions de l'École. -->
+               <country xml:id="FR">France</country>
+            </editor>
+
+            <respStmt>
+               <resp xml:id="encodeur">Personne à l'origine de l'encodage</resp>
+               <name>Maxime Griveau</name>
+            </respStmt>
+            <respStmt>
+               <resp xml:id="correctrice">Personne corrigeant l'ecodage</resp>
+               <name>Ségolène Ablouy</name>
+            </respStmt>
+         </titleStmt>
+
+
+
+
+
+
+         <!-- Présentation de l'édition sur laquelle est basée l'encodage -->
+         <editionStmt>
+            <edition>L'édition sur laquelle est basée l'encodage est la première et unique édition
+               du &LIMC;(volume VI, des Kentaurides à Oiax)</edition>
+            <respStmt xml:id="contributor">
+               <resp>Contributrice</resp>
+               <name>Odette Touchefeu-Meynier</name>
+               <name>Yvette Morizot</name>
+               <note>Seules les contributrices des notices encodées sont mentionnées ici</note>
+            </respStmt>
+
+            <editor>
+               <name>Artemis Verlag</name>
+               <country xml:id="CH">Suisse</country>
+            </editor>
+            <sponsor>
+               <orgName>Université Paris Ouest Nanterre la Défense</orgName>
+               <orgName>
+                  <choice>
+                     <expan>Centre national de la recherche scientifique</expan>
+                     <abbr>CNRS</abbr>
+                  </choice>
+               </orgName>
+               <orgName>
+                  <choice>
+                     <expan>Organisation des Nations unies pour l'éducation, la science et la
+                        culture</expan>
+                     <abbr>UNESCO</abbr>
+                  </choice>
+               </orgName>
+               <orgName>Jean Paul Getty Museum</orgName>
+               <country>France</country>
+               <country>Allemagne</country>
+               <country>Belgique</country>
+               <country>Bulgarie</country>
+               <country>Égypte</country>
+               <country>Espagne</country>
+               <country>États-Unis</country>
+               <country>Grande-Bretagne</country>
+               <country>Grèce</country>
+               <country>Italie</country>
+               <country>Jordanie</country>
+               <country>Pologne</country>
+               <country>Suisse</country>
+               <country>Tunisie</country>
+            </sponsor>
+            <principal>
+               <persName>Lilly Louise Kahil</persName>
+            </principal>
+         </editionStmt>
+         <publicationStmt>
+            <publisher>Fondation Internationale pour le &LIMC;</publisher>
+            <address>
+               <addrLine>51 rue Petersgraben</addrLine>
+               <addrLine>4051</addrLine>
+               <addrLine>Bâle</addrLine>
+               <addrLine>Suisse</addrLine>
+            </address>
+
+            <idno type="ISBN">3-7608-8758-9</idno>
+            <availability status="restricted">
+               <p>Tous droits réservés, fondation pour le &LIMC;</p>
+            </availability>
+
+            <date when="1992-01-01"/>
+            <distributor>Fondation pour le &LIMC;</distributor>
+         </publicationStmt>
+         <seriesStmt>
+            <title>&LIMC;</title>
+         </seriesStmt>
+
+         <notesStmt>
+            <note>La publication des 9 volumes du &LIMC; a durée de 1981 à 1999, nous ne considerons
+               pour cet encodage dans notre Header que le volume encodé, si un encodage de la
+               totalité des volumes du &LIMC; est projeté, il conviendra de tous les renseigner
+               individuellement dans le header.</note>
+            <note>Les volumes du LIMC sont accompagnés de volumes de planches contenant les images
+               des objets mentionnés, nous les ignorons ici car nous allons renvoyer vers des images
+               de meilleur qualité (et les métadonnées liées) sur la base de données en ligne
+               Bezaley Archive</note>
+         </notesStmt>
+
+
+         <!-- Description de notre source -->
+         <sourceDesc>
+
+            <biblStruct>
+
+               <analytic>
+                  <author><persName xml:lang="FR"> Morizot Yvette </persName></author>
+                  <title><ref target="cly"/></title>
+                  <author><persName xml:lang="FR">Odette Touchefeu-Meynier</persName></author>
+                  <title><ref target="lao"/></title>
+               </analytic>
+
+               <monogr>
+                  <author>Fondation pour le &LIMC;</author>
+                  <title>&LIMC; volume VI : Kentauroi et Kentaurides - Oiax </title>
+
+                  <imprint>
+                     <pubPlace>Zürich</pubPlace>
+                     <pubPlace>Munich</pubPlace>
+                     <pubPlace>Dusseldorf</pubPlace>
+                     <publisher>Éditeur</publisher>
+                     <!-- Date de publication -->
+                     <date when="1992-01-01"/>
+                  </imprint>
+               </monogr>
+
+
+
+               <citedRange from="72" to="81" unit="pp"/>
+               <citedRange from="185" to="187" unit="pp"/>
+
+            </biblStruct>
+         </sourceDesc>
+      </fileDesc>
+
+      <!-- Informations concernant l'encodage du texte : à mettre dans l'ODD-->
+
+
+      <encodingDesc>
+         <projectDesc>
+            <p> Nous avons chosi de n'encoder, et encore partiellement, que deux notices du &LIMC;
+               (Volume VI) en choissant à chaque fois les premiers paragraphes des sections, nous
+               n'encodrons donc que quelques pages sur les 8500 que comptent les IX volumes. Notre
+               objectif est ici de poser les bases d'un encodage plus systématique ensuite et
+               potentiellement automatisable. Ce projet d'encodage part de la volonté de rendre le
+               &LIMC; plus accessible et simple d'utilisation. </p>
+         </projectDesc>
+         <samplingDecl>
+            <p>Ouvrage de référence pour les historiens de l'art, archéologues et iconographes, le
+               &LIMC; est un ouvrage essentiel dans l'étude des cultures méditéranéennes</p>
+         </samplingDecl>
+         <editorialDecl>
+            <correction status="medium">
+               <p>L'encodage est réalisée à partir d'une transcription mannuelle du &LIMC; qui a été
+                  relue une fois</p>
+            </correction>
+            <normalization method="silent">
+               <p>Aucune normalisation n'a été opérée, le type de texte n'en nécessitant aucune</p>
+            </normalization>
+            <quotation>
+               <p>Les citations internes (référence à une autre notice du &LIMC;) seront traitées à
+                  l'aide de l'attribut target/ref ; les citations externes (bibliographiques) seront
+                  traités dans des éléments bibleStruct</p>
+            </quotation>
+            <hyphenation eol="all">
+               <p>Les césures seront supprimées, l'objectif n'étant pas de faire une édition
+                  diplomatique</p>
+            </hyphenation>
+
+            <interpretation>
+               <p>Les caractères grecs seront conservés sous forme de leur équivalent unicode et
+                  transcrits en français pour une compréhension plus facile.</p>
+               <p>Les noms des personnages sont abrégés dans l'ouvrage (clytemnestre devient K. dans
+                  le corps de texte par exemple) les abréviations seront développées sans indication
+                  avec "choice" et "expan" car cela allourdi la transcription inutillement</p>
+
+            </interpretation>
+
+         </editorialDecl>
+
+
+
+
+
+
+
+         <!-- Information sur l'utilisation de taxonomies, etc. -->
+         <classDecl>
+            <taxonomy xml:id="DDC23">
+               <bibl>
+                  <title>Classification Dewey</title>
+                  <edition>23e éditon</edition>
+                  <publisher>Online Computer Library Center</publisher>
+                  <pubPlace>Dublin</pubPlace>
+               </bibl>
+
+            </taxonomy>
+            <taxonomy xml:id="RAMEAU">
+               <bibl>Répertoire d'autorité-matière encyclopédique et alphabétique unifié (RAMEAU) de
+                  la Bibliothèque nationale de France. <ptr target="http://rameau.bnf.fr/"/>
+               </bibl>
+            </taxonomy>
+         </classDecl>
+      </encodingDesc>
+
+      <!-- Aspects non bibliographiques du texte numérique -->
+      <profileDesc>
+
+         <!-- Liste des langages utilisés -->
+         <langUsage>
+            <language ident="en"/>
+            <language ident="gre"/>
+            <language ident="fr"/>
+         </langUsage>
+
+
+
+         <!-- Description du sujet du LIMC en utilisant les taxonomies déclarées plus haut -->
+         <textClass>
+            <keywords scheme="#DDC23">
+               <term>Beaux-arts et arts décoratifs</term>
+               <term>Thème de la mythologie et de la légende</term>
+               <term>Dictionnaires et encyclopédies</term>
+            </keywords>
+            <classCode scheme="#DDC22">704.947 03</classCode>
+         </textClass>
+         <textClass>
+            <keywords scheme="#RAMEAU">
+               <term>Mythologie Classique -- dans l'art</term>
+               <term>Art antique -- Thèmes, motifs</term>
+            </keywords>
+            <classCode scheme="#DDC22">704.947 03</classCode>
+         </textClass>
+      </profileDesc>
+
+      <!-- Historique des modifications -->
+      <revisionDesc>
+         <change when="2023-11-29" who="#encodeur">Création de l'encodage, début de remplissage du
+            teiHeader</change>
+
+         <change when="2023-12-01">Ajouts des métadonnées manquantes dans le teiHeader</change>
+         <change when="2023-12-23">Début de l'encodage du texte</change>
+         <change when="2023-12-26"> Encodage de la notice de Clytemnstre en totalité</change>
+         <change when="2023-12-30">Encodage de la notice de Laois</change>
+         <change when="2024-01-06">Relecture de l'encodage, modifications mineures
+            apportées</change>
+      </revisionDesc>
+
+   </teiHeader>
+
+   <!-- Début de l'encodage -->
+   <text>
+      <body>
+         <div type="article" n="cly">
+
+            <!-- Comme la hiérarchie est essentielle dans notre document source, on le structurera en différentes div et sous entrées de dictionnaire (re)-->
+            <head xml:id="cly">Klytaimestra</head>
+            <entry n="1">
+               <!-- n=1 veut dire que mon entrée n'a qu'un seul sens -->
+               <re type="etymologie">
+                  <!-- Structuration des entrées en différente sous entrées, toutes typées en fonction de leur contenu (de façon normalisée) -->
+                  <etym> Formes les plus anciennes <choice>
+                        <orig xml:id="clutumita" n="1"> xml:lang="grc> Κλυταιμήστρα </orig>
+                        <!-- Dans l'ouvrage original, quand le nom mentionné apparaissait sur un objet présent dans le volume de planche, ce dernier était référencé ; nous ferons de même avec des id/ref ; comme nous n'encoderons qu'une partie des notices de personnage (ce serait trop long le cas échéant) ; certaines id pourraient rester sans ref.-->
+                        <reg>Clutumita</reg>
+                     </choice>
+                     <orig xml:id="clutmsta" n="2">Clutmsta</orig>, <orig n="3" xml:id="cluthumstha"
+                        >Cluthumustha</orig>, <orig n="4" xml:id="clunista">Clunista</orig>, <orig
+                        n="5" xml:id="clytaemnestra">Clytaemnestra</orig>,<!-- on utilise l'attribut n pour numéroter les différentes étymologie de l'entrée -->
+                     <orig xml:id="Clytemnestra" n="6">Clytemnestra</orig>, <orig
+                        xml:id="Clutemestra" n="7">Clutemestra</orig></etym>
+               </re>
+
+               <re type="genealogie">
+                  <!-- Les noms d'origine ne sont pas toujours indiqués, on les représente sous forme <orig> <reg> s'ils le sont -->
+                  Fille de <persName role="pere" xml:id="tyn"
+                        ><orig>Tyndareos</orig><reg>Tyndare</reg></persName>et de <persName
+                     role="mere">Leda</persName>, soeur d' <persName role="soeur"
+                  >Helene</persName>et des <persName role="frere"
+                           ><orig>Dioskouroi<reg>Dioscures</reg></orig></persName>, de <persName
+                     role="frere">Phoibe</persName>,<persName role="frere">Phylonoe </persName>et
+                     <persName role="soeur">Timandra</persName>. Klytaimestra a pour époux <persName
+                     role="mari" n="2" xml:id="aga">Agamemnon</persName> qui a tué <persName
+                     role="mari" n="1"><orig>Tantalos</orig><reg>Tantale </reg></persName>, son
+                  premier mari, et pour enfants<persName role="fille"
+                     >Chrysothemis</persName>,<persName role="fille"
+                        ><orig>Elektra</orig><reg>Electre</reg></persName>ou <persName role="fille"
+                     >Laodiké</persName>, <persName role="fille">Iphianassa</persName> et/ou
+                     <persName role="fille" xml:id="iph"
+                     ><orig>lphigeneia</orig><reg>Iphigénie</reg></persName> et <persName
+                     role="fils" xml:id="ore"><orig>Orestes</orig><reg>Oreste </reg></persName>; de
+                  son amant<persName role="mari" n="3" xml:id="egi"
+                        ><orig>Aigisthos</orig><reg>Egisthe</reg></persName> ,elle a <persName
+                     role="fils">Erigone</persName> et peut-être d'autres enfants<bibl> Sophocle
+                     Electre vers 589 ; Euripide Electre vers 62 et vers 626. </bibl>
+                  <!-- Les références à des poèmes ou tragédies antiques seront indiqués dans des bibliographies non structurées car cela fait gagner du temps et que cela n'a pas d'intérêt de citer telle ou telle édition précise : la versification étant toujours la même -->
+                  Klytaimestra n'est pas mentionnée dans les tablettes mycéniennes; le problème de
+                  son origine préhellénique est lié à celui que pose l'Orestie. </re>
+
+               <re type="sources_littéraires"> &KLY; se trouve au centre de deux épisodes
+                  légendaires, le meurtre d'<ref target="aga">Agamemnon</ref> et sa propre mort qui
+                  s'accomplit dans le cadre de la vengeance d'<ref target="ore">Oreste</ref>; elle
+                  intervient également dans les autres mythes du cycle des Atrides et dans la
+                  guérison de <persName role="fils" xml:id="tel"
+                        ><reg>Télèpe</reg><orig>Telephos</orig></persName>. Les sources relatives à
+                  &KLY; comme aux autres Atrides sont variées; les plus riches sont les tragédies
+                  qui explorent les problèmes du matricide et de la relation des sexes; adultère,
+                  meurtrière de son mari, mère indigne, orgueilleuse et tenace, d'une puissance
+                  extraordinaire chez <name xml:id="esc">Eschyle</name>, &KLY; incarne la mauvaise
+                  femme.
+                  <!-- L'attribut name est ici utilisé pour différencier les figures mythologiques des personnes réelles -->
+                  Le présent article rappelle les principaux événements de sa biographie et traite
+                  de sa mort. Parmi les rares faits antérieurs à la guerre de Troie figure une
+                  malédiction d'<persName>Aphrodite</persName> qui condamna les filles de <ref
+                     target="tyn">Tyndare</ref> à être infidèles (Hes.frg. 176 Merkelbach/West;
+                  Stesich., Page PMGfrg. 223 ; cf. Eur. Or. 2497250. 540—541 ; Paus. 3, 15, I I)1.
+                  Le rôle de &KLY; dans les tragédies consacrées à <ref target="tel">Télèphe
+                  </ref>est incertain; il semble que chez <name>Euripide</name>elle suggérait au
+                  héros de s'emparer d'<ref target="ore">Oreste </ref>afin de fléchir <ref
+                     target="aga">Agamemnon </ref>et d'obtenir sa guérison, mais elle était saisie
+                  d'effroi à la vue du danger couru par son fils <ref target="tel">(Telephos)</ref>.
+                  Le sacrifice d '<ref target="iph">Iphigénie</ref>, survenu avant ou après le
+                  passage de <ref target="tel">Télèphe</ref> à Argos, est très tôt présenté comme
+                  une des raisons majeures qui, avec l'amour d'<ref target="egi">Egisthe</ref> et la
+                  jalousie, poussent &KLY; à tuer Agamemnon, Iphigénie étant sauvée à son insu ; les
+                  Tragiques montrent &KLY; outragée suppliant Agamemnon d'épargner sa fille. […] </re>
+               <!-- La notice est tronquée pour des raisons de temps d'encodage -->
+
+
+               <re type="bibliographie">
+                  <listBibl>
+
+                     <biblStruct n="1">
+                        <monogr>
+                           <author>Anti, C </author>
+                           <title xml:lang="it">Una metroctonia non Eschilea</title>
+
+                           <imprint>
+                              <publisher>ArchEph</publisher>
+                              <pubPlace>Rome</pubPlace>
+                              <date>1953-1954</date>
+                           </imprint>
+                           <biblScope unit="page" from="180" to="188"/>
+                        </monogr>
+                     </biblStruct>
+                     <biblStruct n="2">
+                        <monogr>
+                           <author>Bethe, E. </author>
+                           <title>"Klytaimestra"</title>
+
+                           <imprint>
+                              <publisher>Rexi</publisher>
+
+                              <date>1922</date>
+                           </imprint>
+                           <biblScope unit="page" from="890" to="893"/>
+                        </monogr>
+                     </biblStruct>
+                     <biblStruct n="3">
+                        <monogr>
+                           <author>Blome, P.</author>
+                           <title xml:lang="ge">Diefigiirliche Bildtvelt Kretas in der geometrischen
+                              undfrüharchaischen Periode</title>
+
+                           <imprint>
+                              <publisher>ArchEph</publisher>
+                              <pubPlace>Rome</pubPlace>
+                              <date>1982</date>
+                           </imprint>
+                           <biblScope unit="page" from="101" to="104"/>
+                        </monogr>
+                     </biblStruct>
+
+                     <biblStruct n="4">
+                        <monogr>
+                           <author>Delcourt, M.</author>
+                           <title xml:lang="ge" level="a">Oreste et Alcméon </title>
+                           <title level="j">Sagendarstellungen</title>
+
+                           <imprint>
+                              <publisher>Fittschen</publisher>
+                              <pubPlace>Rome</pubPlace>
+                              <date>1982</date>
+                           </imprint>
+                           <biblScope unit="page" from="186" to="191"/>
+                        </monogr>
+                     </biblStruct>
+                     <biblStruct n="5">
+                        <monogr>
+                           <author>Delcourt, M.</author>
+                           <title xml:lang="ge" level="a">Oreste et Alcméon </title>
+                           <title level="j">Sagendarstellungen</title>
+
+                           <imprint>
+                              <publisher>Fittschen</publisher>
+                              <pubPlace>Rome</pubPlace>
+                              <date>1982</date>
+                           </imprint>
+                           <biblScope unit="page" from="186" to="191"/>
+                        </monogr>
+                     </biblStruct>
+
+                     <biblStruct n="6">
+                        <monogr>
+                           <author>Ghali-Kahil, L.</author>
+                           <title>Une hydrie attique à figures rouges du musée de Nauplie</title>
+                           <imprint>
+                              <biblScope unit="volume">BCH 75</biblScope>
+                              <date>1951</date>
+                              <biblScope unit="page" from="316" to="322"/>
+                           </imprint>
+                        </monogr>
+                     </biblStruct>
+                     <biblStruct n="7">
+                        <monogr>
+                           <author>Gerhard, EtrSp</author>
+                           <author>Giuliani, L.</author>
+                           <title>Die archaischen Metopen von Selinunt</title>
+                           <imprint>
+                              <publisher>1979</publisher>
+                              <biblScope unit="page" from="67" to="71"/>
+                           </imprint>
+                        </monogr>
+                     </biblStruct>
+
+                     <biblStruct n="8">
+                        <monogr>
+                           <author>Guerrini, L.</author>
+                           <title>EAA IV</title>
+                           <imprint>
+                              <date>1961</date>
+                              <biblScope unit="page" from="721" to="723" n="s. v. «Clitennestra»"/>
+                           </imprint>
+                        </monogr>
+                     </biblStruct>
+
+
+                     <biblStruct n="9">
+                        <monogr>
+                           <author>Guerrini, L.</author>
+                           <title>EAA V</title>
+                           <imprint>
+                              <date>1963</date>
+                              <biblScope unit="page" from="741" to="743" n="s. v. «Clitennestra»"/>
+                           </imprint>
+                        </monogr>
+                     </biblStruct>
+                     <biblStruct n="10">
+                        <monogr>
+                           <author>McCann, A. M.</author>
+                           <title>Roman Sarcophagi in the Metropolitan Museum of Art</title>
+                           <imprint>
+                              <date>1978</date>
+                              <biblScope unit="page" from="53" to="60"/>
+                           </imprint>
+                        </monogr>
+                     </biblStruct>
+
+
+
+                     <!--  [...] Liste tronquée  -->
+
+                  </listBibl>
+               </re>
+
+
+               <re type="catalogue">
+                  <note type="informations">Certains documents ont déjà été présentés dans le
+                     &LIMC;; se reporter s.v. pour la bibliographie, la description générale des
+                     scènes et des détails concernant les personnages autres que &KLY; ; on donne
+                     ici des compléments bibliographiques, des précisions sur &KLY; ou des
+                     interprétations différentes.</note>
+                  <!-- Par catalogue on veut dire ensemble des oeuvres sur lesquelles le personnage est figuré-->
+                  <!-- Au lieu de se référer au volume de planches lié à notre texte, on créra un lien vers https://www.carc.ox.ac.uk/XDB/ASP/searchOpen.asp [beazley archive] pour les poteries (qui constituent 90 % des objets du LIMC), pour les autres oeuvres, si cela est possible on indiquera le lien vers un musée-->
+                  <re type="représentations_narratives">
+                     <re type="documents_grecs">
+                        <re type="double_meurtre" xml:id="dou_meu"/>
+                        <figure n="1">
+                           <graphic
+                              url="https://www.beazley.ox.ac.uk/record/2FEDFC29-F5D2-4D32-BEFB-339311E85E5E"
+                              xml:id="cly_1"/>
+                           <!-- Les images auront toutes des xml:id pour s'y référer dans le cas où l'objet représente plusieurs personnages ; le système de nommage sera toujours : les trois premières lettres du nom français suivies d'un "_" puis d'un numéro d'ordre -->
+                           <ab type="caption">face a: death of agamemnon, in net, aigisthos with
+                              sword, women, one with double axe (klytaimestra), all in building
+                              (doric entablature with ionic column) face b: death of aigisthos,
+                              draped, seated on chair with lyre, orestes (warrior), women, one with
+                              double axe (klytaimestra), all in building (doric entablature)</ab>
+                           <!-- Pour la légende, on reprendra celle (bien plus complète) de Beazley archive -->
+                        </figure>
+                        <xr>Voir aussi : l'entrée <ref target="aga">Agamemnon</ref>.</xr>
+                        <!-- Dans le volume, référence est faite à l'illustration 87 d'Agamemnon, en TEI nous ferons un lien avec l'illustration correspondante en lui donnant une xml:id ; comme nous n'avons pas encodé Agamemnon ce n'est pas possible -->
+                        <re type="le_meurtre_d'Egiste"/>
+                        <figure n="2">
+                           <graphic
+                              url="https://www.beazley.ox.ac.uk/record/6ED583F8-5381-4042-AF4E-CA49003EA4A3"
+                              xml:id="cly_2"/>
+                           <ab type="caption">a: death of aigisthos, orestes, klytaimestra (all
+                              named) b: klytaimestra and talthybios</ab>
+                        </figure>
+                        <figure n="3">
+                           <graphic
+                              url="https://www.beazley.ox.ac.uk/record/DD3D956F-4D5A-4C9B-B305-8901ABBDF15D"
+                              xml:id="cly_3"/>
+                           <ab type="caption">a: death of <ref target="egi">aigisthos</ref>, <ref
+                                 target="ore">orestes</ref>, <ref target="cly">klytaimestra </ref>
+                              with axe, woman, man (?) b: draped man with sceptre, women</ab>
+                        </figure>
+                        <figure n="4">
+                           <graphic
+                              url="https://www.beazley.ox.ac.uk/record/0761FB38-49A7-4B0E-828F-B74648C5C761"
+                              xml:id="cly_4"/>
+                           <ab type="caption">body: undecorated shoulder: death of aigisthos,
+                              aigisthos, orestes, klytaimestra with double axe, telamedes
+                              (named)</ab>
+                        </figure>
+                        <xr>Voir aussi :<ref target="cly_1">Clytemnestre n°1</ref></xr>
+                        <!-- Possibilité de mettre une liste de références liées ici en reprenant celles du LIMC ; on indiquera tous les personnages et objets qui figurent Clytemnestre dans la scène du meurtre d'Egiste. Par exemple si la face A représente la mort d'Agamenon et la Face B celle d'Egiste on décidera de ne pas créer de doubler mais des liens entre les figures.-->
+                        <re type="représentations_incertaines" xml:id="sce_inc"> </re>
+                        <xr>Voir aussi : <ref target="egi">Egiste n°38</ref></xr>
+                        <!-- Si on reprend la numérotation du LIMC, l'objet référencé 38 à Égisthe est une réprésentation incertaine de son meurtre ou Clytemnestre apparait (c'était pour donner un exemple) -->
+                     </re>
+                  </re>
+                  <!-- Encore une fois, le texte est tronqué. On a choisi uniquement les représentations de Clytemnestre, et uniquement les objets grecs, dans la scène du meutre d'Egiste et d'Agamemnon (qui est la plus fréquente)-->
+               </re>
+
+               <re type="commentaire"> Le meurtre de &KLY; est un sujet assez rare, figuré seul ou
+                  combiné avec le meurtre d'<ref target="egi">Egisthe</ref> et d'autres épisodes de
+                  l'histoire d'<ref target="ore">Oreste</ref>; si son apparition dépend de la
+                  popularité de l'Orestie, elle suppose aussi un état d'esprit et un goût
+                  particuliers. Inséré dans des scènes complexes, le matricide jouit d'une certaine
+                  faveur sur les urnes étrusques et les sarcophages romains qui contribuent à sa
+                  diffusion jusqu'en Gaule et en Espagne; certaines des autres représentations ont
+                  été également recueillies sur le sol italique et/ou dans un contexte funéraire,
+                  auquel le thème semble approprié. Le matériel rassemblé est de nature artisanale,
+                  avec quelques exceptions, <ref target="cly_32">32 </ref>et surtout la peinture de
+                  Théon qui
+                  <!-- Cette ref ne renvoie vers rien car nous n'avons pas encodé toutes les images, si cela avait été le cas elle aurait pointé vers l'image correspondante -->
+                  semble introduire le matricide dans le grand art. A côté des représentations
+                  assurées sont signalées de nombreuses <ref target="sce_inc">scènes
+                     incertaines</ref>; il est hasardeux de reconnaître <ref target="ore"
+                     >Oreste</ref>-&KLY;. dans telle ou telle poursuite d'une femme par un homme
+                  armé, sujet fréquent sur les vases grecs; voir la discussion des principaux
+                  documents par Prag (<ref target="cly_39">39</ref>—<ref target="cly_40">40</ref>)
+                  et les catalogues constitués à propos d'autres personnages, notamment <ref
+                     target="the">Thésée</ref> et <ref target="ait">Aithra</ref>, <ref target="men"
+                     >Ménélas</ref> et <ref target="hel">Hélène</ref> ou <ref target="the"
+                     >Thésée</ref> et <ref target="med">Médée</ref>
+                  <bibl>(cf. Sourvinou- lnwood, Ch., Theseus as Son and Stepson [19791).></bibl>
+               </re>
+
+
+
+            </entry>
+
+
+         </div>
+
+         <div type="article" n="lao">
+            <!-- Comme la hiérarchie est essentielle dans notre document source, on le structurera en différentes div -->
+            <head xml:id="lao">Laois</head>
+            <entry n="1">
+               <!-- n=1 veut dire que mon entrée n'a qu'un seul sens -->
+               <re type="etymologie">
+                  <!-- Structuration des entrées en différente sous entrées, toutes typées en fonction de leur contenu (de façon normalisée) -->
+                  <etym> Formes les plus anciennes <choice>
+                        <orig xml:id="Laius" n="1"> xml:lang="grc"> Λάϊος </orig>
+                        <!-- Dans l'ouvrage original, quand le nom mentionné apparaissait sur un objet présent dans le volume de planche, ce dernier était référencé ; nous ferons de même avec des id/ref ; comme nous n'encoderons qu'une partie des notices de personnage (ce serait trop long le cas échéant) ; certaines id pourraient rester sans ref.-->
+                        <reg>Laïos "le gauche"</reg>
+                     </choice>
+                  </etym>
+               </re>
+
+               <re type="genealogie">
+                  <re type="genealogie"> Roi de Thèbes, descendant de <persName xml:id="kadmons"
+                        role="ancetre">Kadmos</persName>, fils de <persName xml:id="labdakos"
+                        role="pere">Labdakos</persName>, époux de <persName xml:id="jocaste"
+                        role="epouse">Jocaste</persName> dans les traditions les plus courantes père
+                     d' <persName xml:id="oedipe" role="fils"
+                           ><reg>Oedipe</reg><orig>(Oidipous)</orig></persName> , par lequel il est
+                     tué, comme l'avait prédit l'oracle. </re>
+                  <!-- Les noms d'origine ne sont pas toujours indiqués, on les représente sous forme <orig> <reg> s'ils le sont -->
+               </re>
+
+               <re type="sources_littéraires"> La légende de &LAO;, et surtout sa paternité maudite
+                  et sa mort, occupent une place importante dans le cycle thébain. Si le nom même de
+                  &LAO;. n'apparaît que tardivement dans les textes subsistants <bibl>(Pindare O. 2,
+                     42—44)</bibl>, le parricide d'<ref target="oed">Oedipe</ref> était déjà connu
+                  d'Homère <bibl>(Odyssee 1 1, 273—274)</bibl>,et vraisemblablement des auteurs de
+                  deux épopées perdues, une Illébaide et une Oidipodie. Au Ve s. av. J.-C.,
+                  nombreuses furent les oeuvres qui ont dû concerner &LAO;: entre autres une
+                  tétralogie d'<name>Eschyle</name>, dont il ne reste que les Sept contre Thèbes
+                  ainsi que le titre et quelques fragments. des trois autres pièces (Laios, Oedipe,
+                  La Sphinx), un <ref target="oed">Oedipe</ref> de <name>Sophocle</name>, Chrysippos
+                     d'<name>Euripide</name> ; de ces pièces perdues nous savons peu de choses, mais
+                  plusieurs passages de <bibl>Eschyle. Septem (742—749)</bibl>,<bibl>Sophocle Oedipe
+                     roi (711—753 ; 800—813)</bibl>, Eurpide, phoenissae (7—45) dessinent
+                  l'essentiel de la légende; celle-ci peut être complétée par les récits postérieurs
+                  de <bibl>Diodore de Sicile (4, 64)</bibl>, de <name>Pausanias</name>,
+                     <name>d'Apollodore, d'Hygin</name>, qui donnent de nombreuses variantes. [...] </re>
+               <!-- La notice est tronquée pour des raisons de temps d'encodage -->
+
+
+               <re type="bibliographie">
+                  <listBibl>
+                     <biblStruct n="1">
+                        <monogr>
+                           <author>Aélion, R.</author>
+                           <title>Quelques grands mythes héroïques dans l'oeuvre d'Euripide</title>
+
+                           <imprint>
+                              <date>1986</date>
+                              <biblScope unit="page" from="29" to="118"/>
+                           </imprint>
+                        </monogr>
+                     </biblStruct>
+                     <biblStruct n="3" xml:id="bibl_moret">
+                        <monogr>
+                           <author>J. M. Moret</author>
+                           <title>Oedipe, la Sphinx et les Thébains. Essai de mythologie
+                              iconographique</title>
+                           <imprint>
+                              <date>1984</date>
+                              <biblScope unit="page" from="876" to="891"/>
+                           </imprint>
+                        </monogr>
+                     </biblStruct>
+
+                     <biblStruct n="4">
+                        <monogr>
+                           <author>Rocchetti, L.</author>
+                           <title>EAA IV "Laois"</title>
+                           <imprint>
+                              <date>1961</date>
+                              <biblScope unit="page" from="458" to="459"/>
+                              <note/>
+                           </imprint>
+                        </monogr>
+                     </biblStruct>
+
+                     <biblStruct n="5">
+                        <monogr>
+                           <author>Vernant, J.P.</author>
+                           <author>Vidal-Naquet, P.</author>
+                           <title>Mythe et Tragédie II</title>
+
+                           <imprint>
+                              <date>1986</date>
+                              <biblScope unit="page" from="45" to="69"/>
+                           </imprint>
+                        </monogr>
+                     </biblStruct>
+
+                  </listBibl>
+               </re>
+               <!-- Liste tronquée -->
+
+
+               <re type="catalogue">
+                  <re type="Laios_enlève_Chrysippe">
+                     <!-- Aucune image associée dans le volume papier, uniquement des renvois vers d'autres notices : on respecte cette syntaxe en indiquant en note les éléments notés. -->
+                     <note> Ce thème semble inconnu de l'art grec continental ; il est attesté à
+                        partir du IVe s. av. J.-C. en Etrurie et à Préneste (<ref target="chr_7"
+                           >7</ref> et <ref target="chr_16">16</ref>) et en Grande-Grèce : Apulie
+                           (<ref target="chr_2">2</ref>
+                        <ref target="chr_3">3</ref>
+                        <ref target="chr_4">4</ref>). On peut aussi rattacher, avec quelques
+                        réserves, à trois masques tragiques du IV s. av. J.-C., trouvés dans la même
+                        tombe, conservés à Lipari, Mus. Eoliano, interprétés comme ceux de &LAO;;,
+                           <ref target="chr">Chrysippos </ref>et <ref target="hip">Hippodamie </ref>
+                           (<ref target="hip_1">1</ref>), et rapprochés du Chrysippos d'Euripide par
+                              <bibl><name>Bernabò Brea</name> (Menandro e il teatro grec onelle
+                           terracotte liparesi [1981] ; pour &LAO; : 38 A 8)</bibl></note>
+                     <xr>Voir aussi :<ref target="chr_1">Chrysippos 1</ref><ref target="chr_2"
+                           >2</ref>
+                        <ref target="chr_3">3</ref>
+                        <ref target="chr_4">4</ref>
+                        <ref target="chr_5">5</ref>
+                        <ref target="chr_7">7</ref>
+                        <ref target="chr_16">16</ref></xr>
+                  </re>
+                  <re type="Laios_consulte_Apollon_à_Delphes">
+                     <re type="document_prénestin">
+                        <note> Voir <ref target="apo_4">Apollon 4</ref>, la scène d'interprétation
+                           es t discutée: &LAO;, <ref target="oed">Oedipe </ref>ou <ref target="xou"
+                              >Xouthos</ref> devant <ref target="apo">Apollon</ref>?</note>
+                     </re>
+                     <re type="document_romain">
+                        <figure xml:id="lao_7">
+                           <graphic
+                              url="https://utpictura18.univ-amu.fr/notice/20592-sarcophage-dadonis-couvercle-depareille-theme-doedipe"/>
+                           <!-- C'est la seule image que l'on peut trouver concernant ce document : comme il s'agit d'automatiser les taches on pourra, dans le futur, reprendre les images du LIMC plutot que d'en chercher d'autres -->
+                           <ab>Couvercle de sarcophage. Vatican (anc.Latran), Mus. Greg. Prof.
+                              10408. De Rome ; Sept scènes consécutives: 1) &LAO; suivi d'un
+                              serviteur offre un sacrifice devant l'autel d'<ref target="apo"
+                                 >Apollon</ref>. 2) L. assis sur un rocher, vers la gauche, attitude
+                              méditative. 3-6)<ref target="oed">Oedipe</ref>. 7) Char de &LAO; avec
+                              bige au galop vers la droite et serviteur; &LAO; debout sur son char,
+                              est saisi aux cheveux et entraîné en arrière par <ref target="oed"
+                                 >Oedipe</ref>.</ab>
+                        </figure>
+                        <!-- L'oeuvre ne disposant pas de notice, on conservera celle du LIMC -->
+                     </re>
+                     <re type="Laois_et_l'abandon_d'Oedipe">
+                        <re type="document_réfuté">
+                           <figure xml:id="lao_2">
+                              <graphic
+                                 url="https://www.beazley.ox.ac.uk/record/EDBEFD06-6DAF-4779-BE3A-D34105EA600D"/>
+                              <ab type="caption"> A: Euphorbos (named) in chitoniskos and petasos
+                                 with spear carrying the infant oedipus (named) B: draped men with
+                                 staff.</ab>
+                              <note> Il n'y a pas lieu de retenir l'hypothèse de <name>Rocchetti
+                                 </name>selon lequel il pourrait s'agir de &LAO; le peintre
+                                 d'Achille a l'habitude de placer ainsi, en revers, un personnage
+                                 debout, isolé, sans qu'aucun signe suggère le lien qu'il pourrait
+                                 avoir avec la scène principale.</note>
+                           </figure>
+                        </re>
+                     </re>
+                     <re type="Le_combat_avec_Oedipe_et_la_mort_de_Laios">
+                        <figure xml:id="lao_3">
+
+                           <graphic
+                              url="https://www.beazley.ox.ac.uk/record/2332C4CA-375A-42A0-BCE0-D486CCFBC284"/>
+
+                           <ab type="caption"> (fragments): death of laios, oedipus (?), man in
+                              animal skin with kentron (named), chariot, woman (named). Une grande
+                              partie de la scène a disparu, y compris &LAO;; l'identification est
+                              suggérée par les inscriptions [O]IDIPODES, KALLIOPA, SIKON (valet de
+                              &LAO;) </ab>
+
+                        </figure>
+                     </re>
+                  </re>
+                  <!-- Par catalogue on veut dire ensemble des oeuvres sur lesquelles le personnage est figuré-->
+                  <!-- Au lieu de se référer au volume de planches lié à notre texte, on créra un lien vers https://www.carc.ox.ac.uk/XDB/ASP/searchOpen.asp [beazley archive] pour les poteries (qui constituent 90 % des objets du LIMC), pour les autres oeuvres, si cela est possible on indiquera le lien vers un catalogue de musée-->
+               </re>
+               <!-- liste tronquée -->
+
+               <re type="commentaire"> En iconographie, l'histoire de &LAO; semble commencer et
+                  finir avec des images de char; mais aucun document ne suggère une relation
+                  quelconque entre l'enlèvement de Chrysippe, la malédiction des Labdacides (sauf,
+                  peut-être, <ref target="lao_4">4 </ref>Chrysippos <ref target="chr_1">1</ref><ref
+                     target="chr_7">7</ref> ?) et la mort de &LAO; Sur les scènes d'enlèvement &LAO;
+                  est représenté en Grande-Grèce comme un homme jeune, imberbe, nu ou légèrement
+                  vêtu, parfois armé; debout sur son char, entraîné vers la gauche par un attelage
+                  au galop, il maintient fermement du bras gauche le jeune <ref target="chr"
+                     >Chrysippe</ref> ; en Etrurie, même disposition générale, mais &LAO; est vêtu.
+                  La mort de &LAO; , représentée une seule fois en Attique (<ref target="chr_3"
+                     >3</ref>, très incomplet), est attestée dans le monde romain d'une manière
+                  intéressante (<ref target="lao_4">4</ref>—<ref target="lao_7">7</ref>).Sur <ref
+                     target="lao_7">7</ref>, on a cru retrouver la succession des événements tels
+                  que les raconte le prologue des Phénicienne. Mais on constate surtout que,
+                  contrairement à ce que disent les textes dans lesquels &LAO; intervient assez
+                  brutalement dans l'altercation, il apparaît plutôt comme une victime. C'est
+                  particulièrement net sur <ref target="lao_5">5</ref>, où il est véritablement
+                  assassiné par <ref target="oed">Oedipe</ref>, devant un pilier qui préfigure en
+                  quelque sorte la stèle de sa tombe; mais la présence de la figure féminine
+                  allégorique <ref target="agn">Agnoia</ref>, et son geste de surprise ou d'effroi,
+                  soulignent le fait que père et fils ne se sont pas reconnus. Sur <ref
+                     target="lao_7">7</ref>, la mort brutale de &LAO; est clairement indiquée comme
+                  l'aboutissement de l'ordre, non respecté, d'<ref target="apo">Apollon</ref> Mais
+                  il faut reconnaître avec <ref target="bibl_moret">Moret</ref> que si <!-- référence à notre liste bibliographique -->
+                  <cit>
+                     <quote>«le meurtre de Laios, le mariage avec Jocaste, ont été pour les poètes
+                        une source inépuisable de méditation sur la destinée humaine... »</quote>
+                     <ref target="bibl_moret"/>
+                     <quote/>
+                  </cit>, les imagiers se sont montrés bien peu empressés pour en raconter
+                  l'histoire. </re>
+
+               <form> </form>
+
+            </entry>
+         </div>
+      </body>
+   </text>
+</TEI>
